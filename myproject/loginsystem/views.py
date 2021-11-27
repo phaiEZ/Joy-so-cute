@@ -1,7 +1,7 @@
 from django.contrib.messages.api import MessageFailure
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, auth
 
 # Create your views here.
 
@@ -22,14 +22,38 @@ def register(request):
             return redirect('member')
         else:
             if password == repassword:
-                user = User.objects.create_user(
-                    username=username,
-                    email=email,
-                    password=password
-                )
-                user.save()
-                messages.info(request, "*create complete")
+                if User.objects.filter(username=username).exists():
+                    messages.info(request, "username already exists")
+                elif User.objects.filter(email=email).exists():
+                    messages.info(request, "email already exists")
+                else:
+                    user = User.objects.create_user(
+                        username=username,
+                        email=email,
+                        password=password
+                    )
+                    user.save()
+                    messages.info(request, "*create complete")
 
             else:
-                messages.info(request, "*password not match")
+                messages.info(request, "password not match")
+
             return redirect('member')
+
+
+def login(request):
+    username = request.POST["username"]
+    password = request.POST["password"]
+    user = auth.authenticate(username=username, password=password)
+
+    if user is not None:
+        auth.login(request, user)
+        return redirect("panel")
+    else:
+        messages.info(request, "not found")
+        return redirect("member")
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("member")
