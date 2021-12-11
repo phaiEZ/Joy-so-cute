@@ -8,9 +8,9 @@
 
         <div class="blog-list clearfix">
             {% for blog in blogs%}
-            <div class="blog-box row">
+            <div class="blog-box row" style="background-color:white;padding:20px 10px 20px 10px;border-width:3px;border-style:solid;border-radius:20px;border-color:rgba(220,220,220,0.9);margin-bottom: 10px;">
                 <div class="col-md-4">
-                    <div class="post-media">
+                    <div class="post-media" style="border-radius:8px;">
                         <a href="#" title="">
                             <img src="{{blog.image.url}} " alt="" class="img-fluid">
                             <div class="hovereffect"></div>
@@ -21,7 +21,7 @@
                 <!-- end col -->
 
                 <div class="blog-meta big-meta col-md-8">
-                    <h4><a href="{% url 'blogDetail' blog.id%}" title="">{{blog.name}}</a></h4>
+                    <h4 style="background-color:rgba(255,255,255,0.95);padding: 0.9rem 1.25rem 0.9rem 1.25rem;border-width:3px;border-style:solid;border-radius:20px;border-color:rgba(200,200,200,0.9);margin-left: -15%;margin-bottom: 12px;"><a href="{% url 'blogDetail' blog.id%}" title="">{{blog.name}}</a></h4>
                     <p>{{blog.description}}</p>
                     <small class="firstsmall"><a class="bg-orange" href="{%url 'searchCategory' blog.category_id%}" title="">{{blog.category}}</a></small>
                     <small><a href="#" title="">{{blog.created}}</a></small>

@@ -29,6 +29,12 @@ h6 {
     color: #111111;
 }
 
+/* #polTest{
+   border: 5px;
+   border-radius: 10px;
+   border-color: #DA5333; 
+} */
+
 h1:hover a,
 h2:hover a,
 h3:hover a,
@@ -1240,12 +1246,12 @@ hr.invis3 {
     opacity: 0;
 }
 
-.blog-list .blog-meta.big-meta h4 {
+/* .blog-list .blog-meta.big-meta h4 {
     margin-left: -20%;
     margin-top: 1rem;
-    background-color: #ffffff;
+    background-color: white;
     padding: 1rem 1.5rem 1rem;
-}
+} */
 
 .blog-custom-build .blog-meta {
     margin: -4rem 3rem 0;
@@ -1613,7 +1619,7 @@ hr.invis3 {
 .loader {
     display: block;
     margin: 20px auto 0;
-    vertical-align: middle;
+    /* vertical-align: middle; */
 }
 
 #preloader {
